@@ -5,14 +5,46 @@
 package pwo.seq;
 
 import java.util.stream.Stream;
-
 /**
+ * Typ wyliczeniowy obejmujący wszystkie
+ * zrealizowane ciągi. <br>
+ * Jest to również menadżer służący do pozyskania
+ * obiektu klasy ciągu metodą {@link #getGenerator() }
  *
- * @author student
+ * @author tomek
+ * @version 1.0.0
  */
+                /**
+ * Ciąg Fibonacciego
+ * @see <a href="https://pl.wikipedia.org/wiki/Ci%C4%85g_Fibonacciego">Wikipedia</a>
+ */
+
+ /**
+ * Ciąg Lucasa
+ * @see <a href="https://en.wikipedia.org/wiki/Lucas_number">Wikipedia</a>
+ */
+
+
+ /**
+ * Ciąg Tribonacciego
+ * @see <a href="https://pl.wikipedia.org/wiki/Ci%C4%85g_Fibonacciego#Ci%C4%85g_%E2%80%9ETribonacciego%E2%80%9D">Wikipedia</a>
+ */
+
 public enum SeqType {
+
+    /**
+     *
+     */
     FIB,
+
+    /**
+     *
+     */
     LUC,
+
+    /**
+     *
+     */
     TRI;
     private static final int B = 0, L = 3;
     private static final String FIX_SEQTYPE
@@ -26,7 +58,21 @@ public enum SeqType {
         });
     }
 
-    public static SeqType fromString(String type) {
+    /**
+     *
+     * @param type
+     * @return
+     */
+    public static SeqType fromString(String type)
+    /**
+ * Pozyskanie wartości typu na podstawie tekstu.<br>
+ * Metoda nie jest czuła na wielkość czcionki.
+ * Tylko 3 pierwsze litery słowa są znaczące.
+ *
+ * @param type W obecnej wersji: "fib", "luc" lub "tri"
+ * @return Odpowiadająca argumentowi wartość typu lub null
+ */
+    {
         try {
             return valueOf(type.trim()
                     .substring(B, L).toUpperCase());
@@ -37,10 +83,23 @@ public enum SeqType {
         }
     }
 
-    public Generator getGenerator() {
+    /**
+     *
+     * @return
+     */
+    public Generator getGenerator() 
+            /**
+ * Tworzy obiekt generatora.
+ * Korespondujacy z nadaną wartością.
+ *
+ * @return Obiekt implementujący {@link pwo.utils.SequenceGenerator}
+ */{
         switch (this) {
             case FIB:
-                return new FibonacciGenerator();
+                return new FibonacciGenerator(); 
+
+
+
             case LUC:
                 return new LucasGenerator();
             case TRI:
